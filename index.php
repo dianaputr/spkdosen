@@ -1,0 +1,1 @@
+<?php header("location: http://localhost/PPI-yii/spkdospem/web/index.php?r=site%2Fdepan"); ?>
