@@ -8,7 +8,17 @@ use yii\bootstrap\ActiveForm;
 /* @var $model app\models\LoginForm */
 
 $this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+
+$fieldOptions1 = [
+    'options' => ['class' => 'form-group has-feedback'],
+    'inputTemplate' => "{input}<span class='glyphicon glyphicon-envelope form-control-feedback'></span"
+];
+
+$fieldOptions2 = [
+    'options' => ['class' => 'form-group has-feedback'],
+    'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span"
+];
+
 ?>
 <div  class="login-pages">
             <div class="login-logo">
@@ -25,9 +35,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'options' => ['class' => 'form-signin'],
         ]); ?>
 
-        <?= $form->field($model, 'username')->textInput(['placeholder'=>'Username'])->label(false); ?>
+        <?= $form->field($model, 'username', $fieldOptions1)->textInput(['placeholder'=>$model->getAttributeLabel('Username')])->label(false); ?>
 
-        <?= $form->field($model, 'password')->passwordInput(['placeholder'=>'Password'])->label(false); ?>
+        <?= $form->field($model, 'password', $fieldOptions2)->passwordInput(['placeholder'=>$model->getAttributeLabel('Password')])->label(false); ?>
 
         <div class="row">
             <div class="col-xs-8">
@@ -42,6 +52,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'name' => 'login-button'
                     ]) ?>
             </div>
+        <div class="col-xs-8">
+        <?= Html::a('Kembali ke Home', ['depan'], ['class' => 'text-info']); ?>
+        </div>
+        <div class="col-xs-4">
+        <?= Html::a('Register', ['register'], ['class' => 'text-info']); ?>
         </div>
 
     <?php ActiveForm::end(); ?>

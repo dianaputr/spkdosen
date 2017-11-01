@@ -23,7 +23,7 @@ use yii2tech\ar\softdelete\SoftDeleteBehavior;
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     const ROLE_ADMIN = 1;
-    const ROLE_PEGAWAI = 2;
+    const ROLE_MAHASISWA = 2;
 
     public $auth_key;
     public $access_token;
@@ -133,7 +133,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         if ($this->id_role === self::ROLE_ADMIN) {
             return 'Admin';
         } else {
-            return 'Pegawai';
+            return 'Mahasiswa';
         }
     }
 
@@ -150,7 +150,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             self::ROLE_ADMIN => 'Admin',
-            self::ROLE_PEGAWAI => 'Pegawai',
+            self::ROLE_MAHASISWA => 'Mahasiswa',
         ];
     }
 }

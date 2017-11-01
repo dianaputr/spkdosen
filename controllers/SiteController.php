@@ -14,6 +14,7 @@ use app\models\User;
 use app\models\ContactForm;
 use app\models\Pelayanan;
 use yii\web\UploadedFile;
+use app\models\Anggota;
 
 class SiteController extends Controller
 {
@@ -124,6 +125,32 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionAnggota()
+    {
+        $this->layout = 'anggota';
+
+        return $this->render('anggota');
+    }
+    
+     public function actionRegister()
+    {
+        $this->layout = 'login';
+
+        $model = new Anggota();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->createUser();
+            /*$model->sendMailToUser();
+            $model->sendMailToAdmin();*/
+            return $this->redirect(['site/login']); 
+        } else {
+            return $this->render('register',[
+                'model' => $model
+            ]);
+         }
+    }
+
+
 
     /**
      * Logout action.
